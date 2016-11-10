@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HTTPExample.xcscheme</key>
+		<key>AudioClassifier.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B6051734187CACDA00BC168F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B6051755187CACDB00BC168F</key>
+		<key>8DAAE50D1DD5073E004B66D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

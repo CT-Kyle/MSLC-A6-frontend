@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B6051734187CACDA00BC168F"
-               BuildableName = "HTTPExample.app"
-               BlueprintName = "HTTPExample"
-               ReferencedContainer = "container:HTTPExample.xcodeproj">
+               BlueprintIdentifier = "8DAAE50D1DD5073E004B66D7"
+               BuildableName = "AudioClassifier.app"
+               BlueprintName = "AudioClassifier"
+               ReferencedContainer = "container:AudioClassifier.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B6051755187CACDB00BC168F"
-               BuildableName = "HTTPExampleTests.xctest"
-               BlueprintName = "HTTPExampleTests"
-               ReferencedContainer = "container:HTTPExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6051734187CACDA00BC168F"
-            BuildableName = "HTTPExample.app"
-            BlueprintName = "HTTPExample"
-            ReferencedContainer = "container:HTTPExample.xcodeproj">
+            BlueprintIdentifier = "8DAAE50D1DD5073E004B66D7"
+            BuildableName = "AudioClassifier.app"
+            BlueprintName = "AudioClassifier"
+            ReferencedContainer = "container:AudioClassifier.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6051734187CACDA00BC168F"
-            BuildableName = "HTTPExample.app"
-            BlueprintName = "HTTPExample"
-            ReferencedContainer = "container:HTTPExample.xcodeproj">
+            BlueprintIdentifier = "8DAAE50D1DD5073E004B66D7"
+            BuildableName = "AudioClassifier.app"
+            BlueprintName = "AudioClassifier"
+            ReferencedContainer = "container:AudioClassifier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B6051734187CACDA00BC168F"
-            BuildableName = "HTTPExample.app"
-            BlueprintName = "HTTPExample"
-            ReferencedContainer = "container:HTTPExample.xcodeproj">
+            BlueprintIdentifier = "8DAAE50D1DD5073E004B66D7"
+            BuildableName = "AudioClassifier.app"
+            BlueprintName = "AudioClassifier"
+            ReferencedContainer = "container:AudioClassifier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
