@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  AudioClassifier
 //
 //  Created by Luke Oglesbee on 11/10/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface RootViewController : UIViewController
 
 
 @end

@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		8DAAE5131DD5073E004B66D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5121DD5073E004B66D7 /* main.m */; };
 		8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5151DD5073E004B66D7 /* AppDelegate.m */; };
-		8DAAE5191DD5073E004B66D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5181DD5073E004B66D7 /* ViewController.m */; };
 		8DAAE51C1DD5073E004B66D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAAE51A1DD5073E004B66D7 /* Main.storyboard */; };
 		8DAAE51E1DD5073E004B66D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DAAE51D1DD5073E004B66D7 /* Assets.xcassets */; };
 		8DAAE5211DD5073E004B66D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAAE51F1DD5073E004B66D7 /* LaunchScreen.storyboard */; };
+		8DAAE52A1DD526C6004B66D7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5291DD526C6004B66D7 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +20,12 @@
 		8DAAE5121DD5073E004B66D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DAAE5141DD5073E004B66D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DAAE5151DD5073E004B66D7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8DAAE5171DD5073E004B66D7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8DAAE5181DD5073E004B66D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8DAAE51B1DD5073E004B66D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8DAAE51D1DD5073E004B66D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DAAE5201DD5073E004B66D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DAAE5221DD5073E004B66D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DAAE5281DD526C6004B66D7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		8DAAE5291DD526C6004B66D7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 			children = (
 				8DAAE5141DD5073E004B66D7 /* AppDelegate.h */,
 				8DAAE5151DD5073E004B66D7 /* AppDelegate.m */,
-				8DAAE5171DD5073E004B66D7 /* ViewController.h */,
-				8DAAE5181DD5073E004B66D7 /* ViewController.m */,
+				8DAAE5281DD526C6004B66D7 /* RootViewController.h */,
+				8DAAE5291DD526C6004B66D7 /* RootViewController.m */,
 				8DAAE51A1DD5073E004B66D7 /* Main.storyboard */,
 				8DAAE51D1DD5073E004B66D7 /* Assets.xcassets */,
 				8DAAE51F1DD5073E004B66D7 /* LaunchScreen.storyboard */,
@@ -151,8 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DAAE5191DD5073E004B66D7 /* ViewController.m in Sources */,
 				8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */,
+				8DAAE52A1DD526C6004B66D7 /* RootViewController.m in Sources */,
 				8DAAE5131DD5073E004B66D7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +310,7 @@
 				8DAAE5271DD5073E004B66D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
