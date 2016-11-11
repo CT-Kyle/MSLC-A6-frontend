@@ -13,6 +13,11 @@ typedef void (^UpdateBlock)(float *fttMagnitude, UInt32 length);
 @interface AudioEventListener : NSObject
 @property (nonatomic, copy) UpdateBlock updateBlock;
 
-- (AudioEventListener*)initWithUpdateBlock:(UpdateBlock)updateBlock;
-- (void)play;
+-(AudioEventListener*)initWithNoiseThreshold:(float)threshold
+                              andUpdateBlock:(UpdateBlock)updateBlock;
+
+-(void)setNoiseThreshold:(float)noiseThreshold;
+-(void)setUpdateBlock:(UpdateBlock)updateBlock;
+
+-(void)play;
 @end

@@ -17,7 +17,7 @@
 @property (strong, nonatomic) Novocaine *audioManager;
 @property (strong, nonatomic) CircularBuffer *buffer;
 @property (strong, nonatomic) FFTHelper *fftHelper;
-@property float noiseThreshold;
+@property (nonatomic) float noiseThreshold;
 @end
 
 @implementation AudioEventListener
@@ -44,9 +44,10 @@
     return _fftHelper;
 }
 
--(AudioEventListener*)initWithUpdateBlock:(UpdateBlock)updateBlock{
+-(AudioEventListener*)initWithNoiseThreshold:(float)threshold
+                              andUpdateBlock:(UpdateBlock)updateBlock{
     if (self = [super init]) {
-        self.noiseThreshold = -40;
+        self.noiseThreshold = threshold;
         
         self.updateBlock = updateBlock;
         
@@ -59,6 +60,10 @@
     }
     
     return nil;
+}
+
+-(void)setNoiseThreshold:(float)noiseThreshold {
+    _noiseThreshold = noiseThreshold;
 }
 
 -(void)setUpdateBlock:(UpdateBlock)updateBlock {

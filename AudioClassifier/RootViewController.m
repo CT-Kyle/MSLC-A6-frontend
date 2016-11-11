@@ -9,11 +9,9 @@
 #import "RootViewController.h"
 #import "AudioEventListener.h"
 
-#define BUFFER_SIZE 8192
-#define STARTING_THRESHOLD -35
+#define STARTING_THRESHOLD -35.0
 
 @interface RootViewController ()
-@property float noiseThreshold;
 @property (strong, nonatomic) AudioEventListener *audioEventListener;
 @property (weak, nonatomic) IBOutlet UILabel *NoiseLevelTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NoiseThresholdTextLabel;
@@ -24,7 +22,7 @@
 
 #pragma mark UI Stuff
 - (IBAction)NoiseThresholdSliderChange:(UISlider *)sender {
-    self.noiseThreshold = sender.value;
+    [self.audioEventListener setNoiseThreshold:sender.value];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.NoiseThresholdTextLabel setText:[NSString stringWithFormat:@"%.f", sender.value]];
     });
@@ -32,15 +30,16 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.noiseThreshold = STARTING_THRESHOLD;
+
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.NoiseThresholdTextLabel setText:[NSString stringWithFormat:@"%.f", self.noiseThreshold]];
+        [self.NoiseThresholdTextLabel setText:[NSString stringWithFormat:@"%.f", STARTING_THRESHOLD]];
     });
 
-    self.audioEventListener = [[AudioEventListener alloc] initWithUpdateBlock:^(float *fftMagnitude, UInt32 length) {
-        [self updateFFT:fftMagnitude withLength:length];
-    }];
+    self.audioEventListener = [[AudioEventListener alloc]
+                               initWithNoiseThreshold:STARTING_THRESHOLD
+                               andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
+                                   [self updateFFT:fftMagnitude withLength:length];
+                               }];
     
     [self.audioEventListener play];
 }
@@ -51,8 +50,6 @@
         [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
     });
 }
-
-
 
 @end
 
