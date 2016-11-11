@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D1037501DD55A60000ABCEC /* AudioEventListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D10374F1DD55A60000ABCEC /* AudioEventListener.m */; };
 		8DAAE5131DD5073E004B66D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5121DD5073E004B66D7 /* main.m */; };
 		8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5151DD5073E004B66D7 /* AppDelegate.m */; };
 		8DAAE51C1DD5073E004B66D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAAE51A1DD5073E004B66D7 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D10374E1DD55A60000ABCEC /* AudioEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEventListener.h; sourceTree = "<group>"; };
+		8D10374F1DD55A60000ABCEC /* AudioEventListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEventListener.m; sourceTree = "<group>"; };
 		8DAAE50E1DD5073E004B66D7 /* AudioClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DAAE5121DD5073E004B66D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8DAAE5141DD5073E004B66D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 		8DAAE5101DD5073E004B66D7 /* AudioClassifier */ = {
 			isa = PBXGroup;
 			children = (
+				8D10374E1DD55A60000ABCEC /* AudioEventListener.h */,
+				8D10374F1DD55A60000ABCEC /* AudioEventListener.m */,
 				8DAAE5141DD5073E004B66D7 /* AppDelegate.h */,
 				8DAAE5151DD5073E004B66D7 /* AppDelegate.m */,
 				8DAAE5281DD526C6004B66D7 /* RootViewController.h */,
@@ -178,6 +183,7 @@
 				8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */,
 				8DAAE5341DD52B1F004B66D7 /* Novocaine.m in Sources */,
 				8DAAE52A1DD526C6004B66D7 /* RootViewController.m in Sources */,
+				8D1037501DD55A60000ABCEC /* AudioEventListener.m in Sources */,
 				8DAAE52E1DD52AA7004B66D7 /* FFTHelper.m in Sources */,
 				8DAAE5131DD5073E004B66D7 /* main.m in Sources */,
 			);
