@@ -38,6 +38,7 @@
 		8DAAE5301DD52AB3004B66D7 /* CircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularBuffer.m; sourceTree = "<group>"; };
 		8DAAE5321DD52B1F004B66D7 /* Novocaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Novocaine.h; sourceTree = "<group>"; };
 		8DAAE5331DD52B1F004B66D7 /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Novocaine.m; sourceTree = "<group>"; };
+		8DF4E6CF1DD78E4500B857A6 /* HTTPConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +55,7 @@
 		8DAAE5051DD5073E004B66D7 = {
 			isa = PBXGroup;
 			children = (
+				8DF4E6CF1DD78E4500B857A6 /* HTTPConstants.h */,
 				8DAAE52B1DD52A72004B66D7 /* DSPUtils */,
 				8DAAE5101DD5073E004B66D7 /* AudioClassifier */,
 				8DAAE50F1DD5073E004B66D7 /* Products */,
