@@ -9,6 +9,7 @@
 #import "ClassTableViewController.h"
 
 @interface ClassTableViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *addClassButton;
 
 @end
 
@@ -20,10 +21,12 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(refreshPropertyList:)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
+    UIBarButtonItem *addClassButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(manualSegueFunction:)];
+    self.navigationItem.rightBarButtonItem = addClassButton;
 }
-
+- (void)manualSegueFunction:(id)sender{
+    [self performSegueWithIdentifier:@"NewClassSegue" sender:sender];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
