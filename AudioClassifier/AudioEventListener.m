@@ -17,6 +17,7 @@
 @property (strong, nonatomic) Novocaine *audioManager;
 @property (strong, nonatomic) CircularBuffer *buffer;
 @property (strong, nonatomic) FFTHelper *fftHelper;
+@property (strong, nonatomic) NSTimer* timer;
 @property (nonatomic) float noiseThreshold;
 @end
 
@@ -71,16 +72,26 @@
 }
 
 -(void)play{
-    [NSTimer scheduledTimerWithTimeInterval:0.1
-                                     target:self
-                                   selector:@selector(update)
-                                   userInfo:nil
-                                    repeats:YES];
+    if (_timer) {
+        [_timer invalidate];
+    }
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                              target:self
+                                            selector:@selector(update)
+                                            userInfo:nil
+                                             repeats:YES];
     
     [self.audioManager play];
 }
 
-// TODO: Implement a pause
+-(void)pause{
+    if (_timer) {
+        [_timer invalidate];
+    }
+    
+    [self.audioManager pause];
+}
 
 -(void)update{
     float * data = calloc(sizeof(float), BUFFER_SIZE);

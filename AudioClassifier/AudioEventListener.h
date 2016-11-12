@@ -20,4 +20,5 @@ typedef void (^UpdateBlock)(float *fttMagnitude, UInt32 length);
 -(void)setUpdateBlock:(UpdateBlock)updateBlock;
 
 -(void)play;
+-(void)pause;
 @end
