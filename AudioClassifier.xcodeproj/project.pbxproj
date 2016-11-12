@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62402E191DD59F240041430A /* ClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62402E181DD59F240041430A /* ClassTableViewController.m */; };
+		62A201D91DD76ED30069525F /* NewClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A201D81DD76ED30069525F /* NewClassViewController.m */; };
 		8D1037501DD55A60000ABCEC /* AudioEventListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D10374F1DD55A60000ABCEC /* AudioEventListener.m */; };
 		8DAAE5131DD5073E004B66D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5121DD5073E004B66D7 /* main.m */; };
 		8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAE5151DD5073E004B66D7 /* AppDelegate.m */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62402E171DD59F240041430A /* ClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassTableViewController.h; sourceTree = "<group>"; };
+		62402E181DD59F240041430A /* ClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewController.m; sourceTree = "<group>"; };
+		62A201D71DD76ED30069525F /* NewClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewClassViewController.h; sourceTree = "<group>"; };
+		62A201D81DD76ED30069525F /* NewClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewClassViewController.m; sourceTree = "<group>"; };
 		8D10374E1DD55A60000ABCEC /* AudioEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEventListener.h; sourceTree = "<group>"; };
 		8D10374F1DD55A60000ABCEC /* AudioEventListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEventListener.m; sourceTree = "<group>"; };
 		8DAAE50E1DD5073E004B66D7 /* AudioClassifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioClassifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +84,10 @@
 				8DAAE5281DD526C6004B66D7 /* RootViewController.h */,
 				8DAAE5291DD526C6004B66D7 /* RootViewController.m */,
 				8DAAE51A1DD5073E004B66D7 /* Main.storyboard */,
+				62A201D71DD76ED30069525F /* NewClassViewController.h */,
+				62A201D81DD76ED30069525F /* NewClassViewController.m */,
+				62402E171DD59F240041430A /* ClassTableViewController.h */,
+				62402E181DD59F240041430A /* ClassTableViewController.m */,
 				8DAAE51D1DD5073E004B66D7 /* Assets.xcassets */,
 				8DAAE51F1DD5073E004B66D7 /* LaunchScreen.storyboard */,
 				8DAAE5221DD5073E004B66D7 /* Info.plist */,
@@ -138,7 +148,7 @@
 				TargetAttributes = {
 					8DAAE50D1DD5073E004B66D7 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = P3RSMH643E;
+						DevelopmentTeam = W94U84P8JJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -181,10 +191,12 @@
 			files = (
 				8DAAE5311DD52AB3004B66D7 /* CircularBuffer.m in Sources */,
 				8DAAE5161DD5073E004B66D7 /* AppDelegate.m in Sources */,
+				62402E191DD59F240041430A /* ClassTableViewController.m in Sources */,
 				8DAAE5341DD52B1F004B66D7 /* Novocaine.m in Sources */,
 				8DAAE52A1DD526C6004B66D7 /* RootViewController.m in Sources */,
 				8D1037501DD55A60000ABCEC /* AudioEventListener.m in Sources */,
 				8DAAE52E1DD52AA7004B66D7 /* FFTHelper.m in Sources */,
+				62A201D91DD76ED30069525F /* NewClassViewController.m in Sources */,
 				8DAAE5131DD5073E004B66D7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,11 +315,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P3RSMH643E;
+				DEVELOPMENT_TEAM = W94U84P8JJ;
 				INFOPLIST_FILE = AudioClassifier/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = loglesbee.AudioClassifier;
+				PRODUCT_BUNDLE_IDENTIFIER = CalebKyleAudioClassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -316,11 +328,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P3RSMH643E;
+				DEVELOPMENT_TEAM = W94U84P8JJ;
 				INFOPLIST_FILE = AudioClassifier/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = loglesbee.AudioClassifier;
+				PRODUCT_BUNDLE_IDENTIFIER = CalebKyleAudioClassifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
