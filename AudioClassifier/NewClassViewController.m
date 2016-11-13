@@ -48,31 +48,27 @@
                                andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
                                    [self updateFFT:fftMagnitude withLength:length];
                                }];
+
     
+    _blockAccessed = true;
+    [self.audioEventListener play];
 }
 
 -(void)updateFFT:(float *)fftMagnitude withLength:(UInt32)length {
-    NSLog(@"%.1f", fftMagnitude[0]);
+    if (_blockAccessed) {
+        return;
+    }
+    _blockAccessed = true;
+    NSLog(@"lev: %.1f", fftMagnitude[0]);
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
     });
-    if(self.blockAccessed == true){
-        NSLog(@"blockAccessed == true");
-        [self.audioEventListener pause];
-    }
-
 }
 
 - (IBAction)recordSample:(id)sender{
     NSLog(@"blockAccessed = true (recordSample)");
-    self.blockAccessed = true; //set it to false before it plays, then set true again afterwards
-    NSLog(@"audioEventListener play");
-    [self.audioEventListener play];
-
+    _blockAccessed = false; //set it to false before it plays, then set true again afterwards
 }
-
-
-
 
 
 - (IBAction)sendSamples:(id)sender {
