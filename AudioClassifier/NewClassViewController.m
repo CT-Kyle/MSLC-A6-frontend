@@ -8,6 +8,7 @@
 
 #import "NewClassViewController.h"
 #import "AudioEventListener.h"
+#import "HTTPConstants.h"
 
 #define STARTING_THRESHOLD -35.0
 
@@ -22,6 +23,9 @@
 
 @property (strong, nonatomic) AudioEventListener *audioEventListener;
 @property (atomic) BOOL blockAccessed;
+@property (atomic) NSMutableArray* sampleArray;
+
+@property (strong,nonatomic) NSURLSession *session;
 
 @end
 
@@ -63,6 +67,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
     });
+//    NSMutableArray *featureData;
+//    for (int i = 0; i < length; ++i) {
+//        [featureData addObject:[[NSNumber alloc] initWithFloat:fftMagnitude[i]]];
+//    }
+//    [_sampleArray addObject:featureData];
 }
 
 - (IBAction)recordSample:(id)sender{
@@ -72,7 +81,42 @@
 
 
 - (IBAction)sendSamples:(id)sender {
-    //Have to make HTTP request here eventually!
+    //send the server the array of samples with the label to train a new class
+    
+    // setup the url - CHANGE THE ENDPOINT
+    NSString *baseURL = [NSString stringWithFormat:@"%s/AddDataPoint",BASE_URL];
+    NSURL *postUrl = [NSURL URLWithString:baseURL];
+    
+    // data to send in the post request (as JSON)
+    NSError *error = nil;
+    NSDictionary *jsonUpload = @{@"feature":_sampleArray};
+    
+    NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
+    
+    // create a custom HTTP POST request
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUrl];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:requestBody];
+    
+    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                NSLog(@"error: %@", error);
+                return;
+            }
+            
+            NSUInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
+            NSLog(@": %lu", (unsigned long)statusCode);
+            
+            NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
+            
+            NSString *labelResponse = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"prediction"]];
+            NSLog(@"%@",labelResponse);
+            
+            // TODO: Update UI with label
+        }];
+    NSLog(@"Send Samples dern it!");
     [self dismissModalViewControllerAnimated:YES];
 }
 
