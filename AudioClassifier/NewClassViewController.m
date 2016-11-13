@@ -42,6 +42,7 @@
     });
     
     //init event listener and send it the block
+    NSLog(@"allocate event listener");
     self.audioEventListener = [[AudioEventListener alloc]
                                initWithNoiseThreshold:STARTING_THRESHOLD
                                andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
@@ -52,18 +53,22 @@
 
 -(void)updateFFT:(float *)fftMagnitude withLength:(UInt32)length {
     NSLog(@"%.1f", fftMagnitude[0]);
-    if(_blockAccessed == true){
-//        [self.audioEventListener pause];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
+    });
+    if(self.blockAccessed == true){
+        NSLog(@"blockAccessed == true");
+        [self.audioEventListener pause];
     }
-    else{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
-        });
-    }
+
 }
+
 - (IBAction)recordSample:(id)sender{
+    NSLog(@"blockAccessed = true (recordSample)");
+    self.blockAccessed = true; //set it to false before it plays, then set true again afterwards
+    NSLog(@"audioEventListener play");
     [self.audioEventListener play];
-    self.blockAccessed = true;  //set to true so that we only take one 100ms sample
+
 }
 
 
