@@ -9,6 +9,7 @@
 #import "NewClassViewController.h"
 #import "AudioEventListener.h"
 #import "HTTPConstants.h"
+#import "ClassTableViewController.h"
 
 #define STARTING_THRESHOLD -35.0
 
@@ -120,7 +121,7 @@
     } else {
         NSLog(@"Connection could not be made");
     }
-
+    [ClassTableViewController getDataFrom:baseURL]; //update table view from new class view
     [self dismissModalViewControllerAnimated:YES];
 }
 
