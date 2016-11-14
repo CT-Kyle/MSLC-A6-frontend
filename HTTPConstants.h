@@ -11,7 +11,8 @@
 
 //API Base URL
 //#define BASE_URL "http://10.8.122.220:8000"
-#define BASE_URL "http://10.8.9.12:8000"
+//#define BASE_URL "http://10.8.9.12:8000" //Caleb's
+#define BASE_URL "http://10.8.121.234:8000" //Eileen's
 
 //HTTP Status Codes
 #define HTTP_OK 200

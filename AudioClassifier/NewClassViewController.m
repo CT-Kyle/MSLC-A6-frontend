@@ -121,8 +121,37 @@
     } else {
         NSLog(@"Connection could not be made");
     }
-    [ClassTableViewController getDataFrom:baseURL]; //update table view from new class view
+    
+//    [ClassTableViewController getDataFrom:baseURL]; //update table view from new class view
+    NSString *baseURL2 = [NSString stringWithFormat:@"%s/UpdateModel",BASE_URL];
+    [self updateModel:baseURL2];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+// helper function to be called in view did load, performs the GET request for the classes
+- (NSMutableArray *)updateModel:(NSString *)baseURL2{
+    NSURL *getUrl = [NSURL URLWithString:baseURL2];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:baseURL2]];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %li", baseURL2, (long)[responseCode statusCode]);
+        return nil;
+    }
+    else {
+        NSLog(@"Successfully Updated");
+    }
+    //Now parse the data into JSON if connection was successful!
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:oResponseData options:0 error:&error];
+    
+    return [parsedObject valueForKey:@"classes"];
 }
 
 - (void)didReceiveMemoryWarning {
