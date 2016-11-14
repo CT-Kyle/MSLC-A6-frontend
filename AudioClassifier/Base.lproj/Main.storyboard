@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dHw-iL-k30">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClassLabel" id="dHw-iL-k30">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHw-iL-k30" id="PFY-SB-h9k">
@@ -133,8 +133,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="8zZ-GE-RcG" id="8N0-8g-TGe"/>
-                            <outlet property="delegate" destination="8zZ-GE-RcG" id="zbc-R4-TSG"/>
+                            <outlet property="dataSource" destination="8zZ-GE-RcG" id="wne-ja-uBc"/>
+                            <outlet property="delegate" destination="8zZ-GE-RcG" id="gbV-hO-PtK"/>
                         </connections>
                     </tableView>
                     <connections>
@@ -267,14 +267,14 @@
                                 <exclude reference="1lK-g3-cwR"/>
                                 <exclude reference="abM-hu-Hmx"/>
                                 <exclude reference="mSd-VB-xz9"/>
-                                <exclude reference="oqd-M8-VqB"/>
-                                <exclude reference="tjN-fG-Kkm"/>
-                                <exclude reference="vx6-OV-Dw3"/>
+                                <exclude reference="LVf-2r-A1m"/>
+                                <exclude reference="o62-XZ-KTC"/>
                                 <exclude reference="3sl-vo-FNR"/>
                                 <exclude reference="54l-8d-JsR"/>
                                 <exclude reference="M2v-2L-pBY"/>
-                                <exclude reference="LVf-2r-A1m"/>
-                                <exclude reference="o62-XZ-KTC"/>
+                                <exclude reference="oqd-M8-VqB"/>
+                                <exclude reference="tjN-fG-Kkm"/>
+                                <exclude reference="vx6-OV-Dw3"/>
                                 <exclude reference="QfK-kn-pWI"/>
                                 <exclude reference="ibu-m9-bO7"/>
                                 <exclude reference="tYX-1b-J8M"/>
@@ -289,13 +289,10 @@
                                 <include reference="mSd-VB-xz9"/>
                                 <exclude reference="rJD-vz-uTg"/>
                                 <exclude reference="wes-6P-O0b"/>
-                                <exclude reference="4Kp-vq-XIu"/>
-                                <exclude reference="VCb-Yq-fdg"/>
-                                <include reference="oqd-M8-VqB"/>
-                                <exclude reference="roW-s6-eWa"/>
-                                <exclude reference="ruy-SH-n5p"/>
-                                <include reference="tjN-fG-Kkm"/>
-                                <include reference="vx6-OV-Dw3"/>
+                                <include reference="LVf-2r-A1m"/>
+                                <exclude reference="QWF-oG-ADT"/>
+                                <include reference="o62-XZ-KTC"/>
+                                <exclude reference="szw-Cc-rAa"/>
                                 <include reference="3sl-vo-FNR"/>
                                 <include reference="54l-8d-JsR"/>
                                 <exclude reference="F4j-VM-Fqm"/>
@@ -303,10 +300,13 @@
                                 <include reference="M2v-2L-pBY"/>
                                 <exclude reference="ZLH-C5-N9r"/>
                                 <exclude reference="pDe-tg-yNu"/>
-                                <include reference="LVf-2r-A1m"/>
-                                <exclude reference="QWF-oG-ADT"/>
-                                <include reference="o62-XZ-KTC"/>
-                                <exclude reference="szw-Cc-rAa"/>
+                                <exclude reference="4Kp-vq-XIu"/>
+                                <exclude reference="VCb-Yq-fdg"/>
+                                <include reference="oqd-M8-VqB"/>
+                                <exclude reference="roW-s6-eWa"/>
+                                <exclude reference="ruy-SH-n5p"/>
+                                <include reference="tjN-fG-Kkm"/>
+                                <include reference="vx6-OV-Dw3"/>
                                 <exclude reference="Ob8-3X-p8d"/>
                                 <include reference="QfK-kn-pWI"/>
                                 <exclude reference="ibu-m9-bO7"/>

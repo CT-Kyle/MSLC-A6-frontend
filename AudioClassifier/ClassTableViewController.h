@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ClassTableViewController : UITableViewController
+@interface ClassTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@property (atomic) NSMutableArray *classArray;
++ (NSMutableArray *)getDataFrom:(NSString *)baseURL;
 
 @end
