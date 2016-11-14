@@ -23,7 +23,7 @@
 
 @property (strong, nonatomic) AudioEventListener *audioEventListener;
 @property (atomic) BOOL blockAccessed;
-@property (atomic) NSMutableArray* sampleArray;
+
 
 @property (strong,nonatomic) NSURLSession *session;
 
@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _sampleArray = [[NSMutableArray alloc] init];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.thresholdSliderLabel setText:[NSString stringWithFormat:@"%.f", STARTING_THRESHOLD]];
@@ -67,11 +68,11 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
     });
-//    NSMutableArray *featureData;
-//    for (int i = 0; i < length; ++i) {
-//        [featureData addObject:[[NSNumber alloc] initWithFloat:fftMagnitude[i]]];
-//    }
-//    [_sampleArray addObject:featureData];
+    NSMutableArray *featureData = [[NSMutableArray alloc] init];
+    for (int i = 0; i < length; ++i) {
+        [featureData addObject:[[NSNumber alloc] initWithFloat:fftMagnitude[i]]];
+    }
+    [self.sampleArray addObject:featureData];
 }
 
 - (IBAction)recordSample:(id)sender{
@@ -89,7 +90,8 @@
     
     // data to send in the post request (as JSON)
     NSError *error = nil;
-    NSDictionary *jsonUpload = @{@"feature":_sampleArray};
+//    NSLog(@"%@sampleArray: %)
+    NSDictionary *jsonUpload = @{@"feature":self.sampleArray, @"label":@"example_class"};
     
     NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
     
@@ -99,24 +101,15 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:requestBody];
     
-    NSURLSessionDataTask *postTask = [self.session dataTaskWithRequest:request
-        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (error) {
-                NSLog(@"error: %@", error);
-                return;
-            }
-            
-            NSUInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
-            NSLog(@": %lu", (unsigned long)statusCode);
-            
-            NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-            
-            NSString *labelResponse = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"prediction"]];
-            NSLog(@"%@",labelResponse);
-            
-            // TODO: Update UI with label
-        }];
-    NSLog(@"Send Samples dern it!");
+    
+    //Still need to add error handling
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if(conn) {
+        NSLog(@"Connection Successful");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -10,4 +10,6 @@
 
 @interface NewClassViewController : UIViewController
 
+@property (atomic, retain) NSMutableArray* sampleArray;
+
 @end
