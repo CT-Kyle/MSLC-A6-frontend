@@ -19,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *KNNTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *RFCTextLabel;
 
-
-@property (strong,nonatomic) NSURLSession *session;
+@property (strong, nonatomic) NSURLSession *session;
+@property (strong, nonatomic) NSTimer * predictionResetTimer;
 @end
 
 
@@ -84,6 +84,14 @@
     [self predictFeature:[NSArray arrayWithArray:featureData]];
 }
 
+- (void)clearPredictionLables {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.KNNTextLabel setText:@"--"];
+        [self.RFCTextLabel setText:@"--"];
+        
+    });
+}
+
 - (void)predictFeature:(NSArray*)data {
     // send the server new feature data and request back a prediction of the class
     
@@ -120,9 +128,21 @@
             }
             
             NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
-
-            NSString *labelResponse = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"prediction"]];
-            NSLog(@"label: %@",labelResponse);
+            NSString *labelKNN = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"predictionKN"]];
+            NSString *labelRFC = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"predictionRF"]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.KNNTextLabel setText:labelKNN];
+                [self.RFCTextLabel setText:labelRFC];
+                if (_predictionResetTimer) {
+                    [_predictionResetTimer invalidate];
+                }
+                _predictionResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.5
+                                                          target:self
+                                                        selector:@selector(clearPredictionLables)
+                                                        userInfo:nil
+                                                         repeats:NO];
+            });
 
             // TODO: Update UI with label
      }];
