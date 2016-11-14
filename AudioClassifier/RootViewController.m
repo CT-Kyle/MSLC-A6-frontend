@@ -137,7 +137,7 @@
                 if (_predictionResetTimer) {
                     [_predictionResetTimer invalidate];
                 }
-                _predictionResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.5
+                _predictionResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.2
                                                           target:self
                                                         selector:@selector(clearPredictionLables)
                                                         userInfo:nil
