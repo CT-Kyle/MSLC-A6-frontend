@@ -19,11 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.classArray = [[NSMutableArray alloc] init];
-    NSString *baseURL = [NSString stringWithFormat:@"%s/GetClasses",BASE_URL];
-    self.classArray = [ClassTableViewController getDataFrom: baseURL];  //do it this way because its a class method
-
-    
     UIBarButtonItem *addClassButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(manualSegueFunction:)];
     self.navigationItem.rightBarButtonItem = addClassButton;
 }

@@ -95,6 +95,7 @@
 
 - (IBAction)sendSamples:(id)sender {
     //send the server the array of samples with the label to train a new class
+
     
     // setup the url - CHANGE THE ENDPOINT
     NSString *baseURL = [NSString stringWithFormat:@"%s/AddDataPoint",BASE_URL];
@@ -113,7 +114,6 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:requestBody];
     
-    
     //Still need to add error handling
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if(conn) {
@@ -121,8 +121,13 @@
     } else {
         NSLog(@"Connection could not be made");
     }
-    
-//    [ClassTableViewController getDataFrom:baseURL]; //update table view from new class view
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
     NSString *baseURL2 = [NSString stringWithFormat:@"%s/UpdateModel",BASE_URL];
     [self updateModel:baseURL2];
     [self dismissModalViewControllerAnimated:YES];
