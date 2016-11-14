@@ -16,6 +16,9 @@
 @property (strong, nonatomic) AudioEventListener *audioEventListener;
 @property (weak, nonatomic) IBOutlet UILabel *NoiseLevelTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *NoiseThresholdTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *KNNTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *RFCTextLabel;
+
 
 @property (strong,nonatomic) NSURLSession *session;
 @end
@@ -56,15 +59,24 @@
                                    [self updateFFT:fftMagnitude withLength:length];
                                }];
     
+//    [self.audioEventListener play];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     [self.audioEventListener play];
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.audioEventListener pause];
+}
+
 
 -(void)updateFFT:(float *)fftMagnitude withLength:(UInt32)length {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.NoiseLevelTextLabel setText:[NSString stringWithFormat:@"%.f", fftMagnitude[0]]];
     });
     
-    NSMutableArray *featureData;
+    NSMutableArray *featureData = [[NSMutableArray alloc] init];
     for (int i = 0; i < length; ++i) {
         [featureData addObject:[[NSNumber alloc] initWithFloat:fftMagnitude[i]]];
     }
@@ -101,12 +113,16 @@
             }
             
             NSUInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
-            NSLog(@"Predict One: %lu", (unsigned long)statusCode);
+            
+            if (statusCode != HTTP_OK) {
+                NSLog(@"Predict One: %lu", (unsigned long)statusCode);
+                return;
+            }
             
             NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &error];
 
             NSString *labelResponse = [NSString stringWithFormat:@"%@",[responseData valueForKey:@"prediction"]];
-            NSLog(@"%@",labelResponse);
+            NSLog(@"label: %@",labelResponse);
 
             // TODO: Update UI with label
      }];
