@@ -12,6 +12,7 @@
 #import "FFTHelper.h"
 
 #define BUFFER_SIZE 8192
+#define DEFAULT_THRESHOLD -35.0;
 
 @interface AudioEventListener ()
 @property (strong, nonatomic) Novocaine *audioManager;
@@ -22,6 +23,33 @@
 @end
 
 @implementation AudioEventListener
+
++(AudioEventListener*) sharedInstance {
+    static AudioEventListener* _sharedInstance = nil;
+    
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[AudioEventListener alloc] init];
+    });
+    
+    return _sharedInstance;
+}
+
+-(id)init {
+    if (self = [super init]) {
+        _noiseThreshold = DEFAULT_THRESHOLD;
+        
+        __block AudioEventListener * __weak  weakSelf = self;
+        [self.audioManager setInputBlock:^(float *data, UInt32 numFrames, UInt32 numChannels) {
+            [weakSelf.buffer addNewFloatData:data withNumSamples:numFrames];
+        }];
+        
+        return self;
+    }
+    
+    return nil;
+}
 
 -(Novocaine*)audioManager{
     if(!_audioManager){
@@ -43,24 +71,6 @@
         _fftHelper = [[FFTHelper alloc]initWithFFTSize:BUFFER_SIZE];
     }
     return _fftHelper;
-}
-
--(AudioEventListener*)initWithNoiseThreshold:(float)threshold
-                              andUpdateBlock:(UpdateBlock)updateBlock{
-    if (self = [super init]) {
-        self.noiseThreshold = threshold;
-        
-        self.updateBlock = updateBlock;
-        
-        __block AudioEventListener * __weak  weakSelf = self;
-        [self.audioManager setInputBlock:^(float *data, UInt32 numFrames, UInt32 numChannels) {
-            [weakSelf.buffer addNewFloatData:data withNumSamples:numFrames];
-        }];
-
-        return self;
-    }
-    
-    return nil;
 }
 
 -(void)setNoiseThreshold:(float)noiseThreshold {

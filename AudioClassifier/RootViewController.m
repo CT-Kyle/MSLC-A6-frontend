@@ -26,6 +26,13 @@
 
 @implementation RootViewController
 
+-(AudioEventListener*) audioEventListener {
+    if (!_audioEventListener) {
+        _audioEventListener = [AudioEventListener sharedInstance];
+    }
+    return _audioEventListener;
+}
+
 #pragma mark UI Stuff
 - (IBAction)NoiseThresholdSliderChange:(UISlider *)sender {
     [self.audioEventListener setNoiseThreshold:sender.value];
@@ -53,16 +60,16 @@
                                                  delegate:self
                                             delegateQueue:nil];
 
-    self.audioEventListener = [[AudioEventListener alloc]
-                               initWithNoiseThreshold:STARTING_THRESHOLD
-                               andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
-                                   [self updateFFT:fftMagnitude withLength:length];
-                               }];
+    [self.audioEventListener setNoiseThreshold:STARTING_THRESHOLD];
     
 //    [self.audioEventListener play];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    __block RootViewController * __weak  weakSelf = self;
+    [self.audioEventListener setUpdateBlock:^(float *fftMagnitude, UInt32 length) {
+        [weakSelf updateFFT:fftMagnitude withLength:length];
+    }];
     [self.audioEventListener play];
 }
 

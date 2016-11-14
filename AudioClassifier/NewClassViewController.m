@@ -32,6 +32,14 @@
 
 @implementation NewClassViewController
 
+
+-(AudioEventListener*) audioEventListener {
+    if (!_audioEventListener) {
+        _audioEventListener = [AudioEventListener sharedInstance];
+    }
+    return _audioEventListener;
+}
+
 - (IBAction)NoiseThresholdSliderChange:(UISlider *)sender {
     [self.audioEventListener setNoiseThreshold:sender.value];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -56,16 +64,32 @@
     
     //init event listener and send it the block
     NSLog(@"allocate event listener");
-    self.audioEventListener = [[AudioEventListener alloc]
-                               initWithNoiseThreshold:STARTING_THRESHOLD
-                               andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
-                                   [self updateFFT:fftMagnitude withLength:length];
-                               }];
+    
+    
+    [self.audioEventListener setNoiseThreshold:STARTING_THRESHOLD];
+    
+//    self.audioEventListener = [[AudioEventListener alloc]
+//                               initWithNoiseThreshold:STARTING_THRESHOLD
+//                               andUpdateBlock:^(float *fftMagnitude, UInt32 length) {
+//                                   [self updateFFT:fftMagnitude withLength:length];
+//                               }];
 
     
     _blockAccessed = true;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    __block NewClassViewController * __weak  weakSelf = self;
+    [self.audioEventListener setUpdateBlock:^(float *fftMagnitude, UInt32 length) {
+        [weakSelf updateFFT:fftMagnitude withLength:length];
+    }];
     [self.audioEventListener play];
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.audioEventListener pause];
+}
+
 
 -(void)updateFFT:(float *)fftMagnitude withLength:(UInt32)length {
     if (_blockAccessed) {
