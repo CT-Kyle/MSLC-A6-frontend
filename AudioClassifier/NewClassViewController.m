@@ -37,10 +37,17 @@
         [self.thresholdSliderLabel setText:[NSString stringWithFormat:@"%.f", sender.value]];
     });
 }
+-(void)dismissKeyboard {
+    [self.nameField resignFirstResponder];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _sampleArray = [[NSMutableArray alloc] init];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.thresholdSliderLabel setText:[NSString stringWithFormat:@"%.f", STARTING_THRESHOLD]];
@@ -80,6 +87,10 @@
     _blockAccessed = false; //set it to false before it plays, then set true again afterwards
 }
 
+- (IBAction)resetClass:(id)sender{
+    NSLog(@"Resetting class... Somebody probably put in some crappy data.");
+    [self.sampleArray removeAllObjects];
+}
 
 - (IBAction)sendSamples:(id)sender {
     //send the server the array of samples with the label to train a new class
@@ -90,8 +101,8 @@
     
     // data to send in the post request (as JSON)
     NSError *error = nil;
-//    NSLog(@"%@sampleArray: %)
-    NSDictionary *jsonUpload = @{@"feature":self.sampleArray, @"label":@"example_class"};
+    NSString *label = [self.nameField text];
+    NSDictionary *jsonUpload = @{@"feature":self.sampleArray, @"label":label}; //set JSON dict
     
     NSData *requestBody=[NSJSONSerialization dataWithJSONObject:jsonUpload options:NSJSONWritingPrettyPrinted error:&error];
     

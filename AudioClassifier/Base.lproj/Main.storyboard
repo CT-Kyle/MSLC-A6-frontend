@@ -188,6 +188,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Reset Class"/>
+                                <connections>
+                                    <action selector="resetClass:" destination="c30-pe-oCg" eventType="touchUpInside" id="OQR-yx-c4Q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wg0-ng-Chw">
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -219,6 +222,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Qpt-Vi-sEZ" firstAttribute="leading" secondItem="H3E-bV-rwT" secondAttribute="leading" id="2SK-nl-PvW"/>
                             <constraint firstItem="R9U-LD-P0q" firstAttribute="top" secondItem="QiZ-Ll-pmK" secondAttribute="bottom" constant="91" id="4dU-Jd-a1X"/>
@@ -248,6 +252,9 @@
                             <constraint firstItem="R9U-LD-P0q" firstAttribute="top" secondItem="Wg0-ng-Chw" secondAttribute="bottom" constant="220" id="xqd-Nc-xJl"/>
                             <constraint firstItem="Rb7-Qy-Aks" firstAttribute="centerX" secondItem="yI0-XV-ObO" secondAttribute="centerX" id="zQD-ur-ACn"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="nmn-Ta-FsK" appends="YES" id="7Ee-U4-twH"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="NoiseLevelTextLabel" destination="Rb7-Qy-Aks" id="dd7-82-vHm"/>
@@ -260,6 +267,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiF-hJ-car" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nmn-Ta-FsK"/>
             </objects>
             <point key="canvasLocation" x="1933.5999999999999" y="-196.55172413793105"/>
         </scene>
