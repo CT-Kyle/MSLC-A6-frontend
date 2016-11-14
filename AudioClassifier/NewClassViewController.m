@@ -86,6 +86,9 @@
 - (IBAction)recordSample:(id)sender{
     NSLog(@"blockAccessed = true (recordSample)");
     _blockAccessed = false; //set it to false before it plays, then set true again afterwards
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.NoiseLevelTextLabel setText:@"Ready"];
+    });
 }
 
 - (IBAction)resetClass:(id)sender{
