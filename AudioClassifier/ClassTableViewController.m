@@ -27,6 +27,14 @@
     UIBarButtonItem *addClassButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(manualSegueFunction:)];
     self.navigationItem.rightBarButtonItem = addClassButton;
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.classArray = [[NSMutableArray alloc] init];
+    NSString *baseURL = [NSString stringWithFormat:@"%s/GetClasses",BASE_URL];
+    self.classArray = [ClassTableViewController getDataFrom: baseURL];  //do it this way because its a class method
+    [self.tableView reloadData];
+}
 
 // helper function to be called in view did load, performs the GET request for the classes
 + (NSMutableArray *)getDataFrom:(NSString *)baseURL{
