@@ -74,7 +74,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [self.audioEventListener pause];
+    [_audioEventListener pause];
 }
 
 
